@@ -4,6 +4,12 @@ My shop script supports selling goods yourself in spance engineer.
 
 太空工程师，我的商店脚本，支持自己卖货、添加收购单。
 
+# 流程
+
+LCD进行商品显示，按钮进行操作，公私箱子分组。
+
+你需要安装至少两个LCD和多个按钮，修改LCD名称，并对按钮动作进行配置，同时需要给箱子配置自定义数据和是否与所有人共享。
+
 # config
 
 ## LCD
