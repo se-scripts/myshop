@@ -34,7 +34,6 @@ namespace IngameScript
         */
         MyIni _ini = new MyIni();
 
-        List<IMyCargoContainer> cargoContainers = new List<IMyCargoContainer>();
         List<string> spritesList = new List<string>();
 
 
@@ -42,40 +41,11 @@ namespace IngameScript
 
         const string information_Section = "Information";
         const string translateList_Section = "TranslateList", length_Key = "Length";
-        int counter_ProgramRefresh = 0;
         double counter_Logo = 0;
 
         Color background_Color = new Color(0, 35, 45);
         Color border_Color = new Color(0, 130, 255);
 
-        public struct ItemList
-        {
-            public string Name;
-            public double Amount;
-        }
-        ItemList[] itemList_All;
-        ItemList[] itemList_Ore;
-        ItemList[] itemList_Ingot;
-        ItemList[] itemList_Component;
-        ItemList[] itemList_AmmoMagazine;
-
-
-
-        public struct Facility_Struct
-        {
-            public bool IsEnabled_Bool;
-            public string Name;
-            public bool IsProducing_Bool;
-            public bool IsCooperativeMode_Bool;
-            public bool IsRepeatMode_Bool;
-            public string Picture;
-            public double ItemAmount;
-            public string InputInventory;
-            public string OutputInventory;
-            public string Productivity;
-        }
-        Facility_Struct[] refineryList;
-        Facility_Struct[] assemblerList;
 
         // 商品列表单项
         public struct Goods
@@ -116,7 +86,7 @@ namespace IngameScript
 
         public Program()
         {
-            Runtime.UpdateFrequency = UpdateFrequency.Once | UpdateFrequency.Update10;
+            Runtime.UpdateFrequency = UpdateFrequency.Once;
 
             SetDefultConfiguration();
 
@@ -124,11 +94,8 @@ namespace IngameScript
 
             ProgrammableBlockScreen();
 
-            GridTerminalSystem.GetBlocksOfType(cargoContainers, b => b.IsSameConstructAs(Me));
-
-            GridTerminalSystem.GetBlocksOfType(tradeCargos, b => b.IsSameConstructAs(Me) && b.CustomData.Contains("Public_Item_Cargo"));
-            cargoContainers.RemoveAll(c => c.CustomData.Contains("Public_Item_Cargo"));
-            GridTerminalSystem.GetBlocksOfType(stockCargos, b => b.IsSameConstructAs(Me) && b.CustomData.Contains("Private_Item_Cargo"));
+            GridTerminalSystem.GetBlocksOfType(tradeCargos, b => b.IsSameConstructAs(Me) && b.CustomData.Contains("PublicItemCargo"));
+            GridTerminalSystem.GetBlocksOfType(stockCargos, b => b.IsSameConstructAs(Me) && b.CustomData.Contains("PrivateItemCargo"));
 
             goodsListLcd = (IMyTextPanel)GridTerminalSystem.GetBlockWithName("LCD_ITEM_LIST");
             cartLcd = (IMyTextPanel)GridTerminalSystem.GetBlockWithName("LCD_ITEM_SELECTOR");
@@ -173,15 +140,14 @@ namespace IngameScript
                 num -= GetAmountInShopCargos(itemName);
                 sellGoodsNumList.Add(result[0], num <= 0 ? 0 : num);
             }
-            //DebugLCD("sell num list count: " + sellGoodsNumList.Count);
-
+            // Echo("sell num list count: " + sellGoodsNumList.Count);
         }
 
         public double GetAmountInShopCargos(string itemName)
         {
             double total = 0;
 
-            foreach (var c in cargoContainers)
+            foreach (var c in stockCargos)
             {
                 var itemAmount = c.GetInventory().GetItemAmount(MyItemType.Parse(itemName)).ToIntSafe();
                 total += itemAmount;
@@ -248,6 +214,8 @@ namespace IngameScript
             {
                 _ini.Set(translateList_Section, length_Key, "1");
                 _ini.Set(translateList_Section, "1", "AH_BoreSight:More");
+                _ini.Set(goodsListSelection, length_Key, "0");
+                _ini.Set(sellListSelection, length_Key, "0");
                 Me.CustomData = _ini.ToString();
             }
         }
@@ -558,6 +526,7 @@ namespace IngameScript
             goodsListLcd.WriteText("出售列表\n 总项数[" + sellGoodsList.Count + "] 当前页[" + page + "/" + (((sellGoodsList.Count - 1) / size) + 1) + "] \n", false);
             goodsListLcd.WriteText("名称--------收购价--------收购量\n", true);
 
+            // Echo("sellGoodsList Count: " + goodsLcdGoodsList.Count);
             currentPageGoods.Clear();
             int first = (page - 1) * size;
             int last = (first + size) > sellGoodsList.Count ? sellGoodsList.Count : (first + size);
@@ -676,18 +645,18 @@ namespace IngameScript
             cartLcd.FontColor = Color.SkyBlue;
             cartLcd.Alignment = TextAlignment.CENTER;
 
-            var nameCn = translator[selectGoodsName];
+            var nameCn = translator.ContainsKey(selectGoodsName) ? translator[selectGoodsName] : "";
             var buyPrice = CalculateBuyPrice(selectGoodsName, cartSelectGoodsAmount);
             var buyTotal = cartSelectGoodsAmount * buyPrice;
-            var sellPrice = sellPrices[selectGoodsName];
+            var sellPrice = sellPrices.ContainsKey(selectGoodsName) ? sellPrices[selectGoodsName] : -1;
             var sellTotal = cartSelectGoodsAmount * sellPrice;
             var pubCargoSCNum = GetPubCargoSCNum();
             var shopCargoScNum = GetShopCargoScNum();
-            //DebugLCD("SC: " + AmountUnitConversion(scCount));
+            // DebugLCD("SC: " + AmountUnitConversion(pubCargoSCNum));
             bool scIsEnough = isBuyMode ? (pubCargoSCNum > buyTotal) : (shopCargoScNum > sellTotal);
             var selectGoodsAmount = GetSelectGoodsAmount();
             var pubCargoSelectGoodsAmount = GetPubCargoSelectGoodsAmount();
-            //DebugLCD("pubCargoSelectGoodsAmount: " + AmountUnitConversion(pubCargoSelectGoodsAmount));
+            // DebugLCD("pubCargoSelectGoodsAmount: " + AmountUnitConversion(pubCargoSelectGoodsAmount));
             bool amountIsEnough = cartSelectGoodsAmount <= (isBuyMode ? selectGoodsAmount : pubCargoSelectGoodsAmount);
             bool sellNumNotUpperLimit = true;
             if (selectGoodsName != null && selectGoodsName != "" && cartSelectGoodsAmount > 0 && sellGoodsNumList.ContainsKey(selectGoodsName) && cartSelectGoodsAmount > sellGoodsNumList[selectGoodsName])
@@ -816,6 +785,7 @@ namespace IngameScript
 
         public double GetPubCargoSelectGoodsAmount()
         {
+            if (selectGoodsName == null || selectGoodsName == "") return 0;
             var goods = currentPageGoods.Find(g => g.Name == selectGoodsName);
             List<IMyInventoryItem> allItems = new List<IMyInventoryItem>();
             double total = 0;
@@ -1114,7 +1084,7 @@ namespace IngameScript
         public void Main(string argument, UpdateType updateSource)
         {
             Echo($"{DateTime.Now}");
-            Echo("MyShop Program is running.");
+            Echo("MyShop Program run once.");
 
             // DebugLCD("\nbuyPrieces count: " + buyPrices.Count
             //     + "\n" + "sellPrieces count: " + sellPrices.Count
