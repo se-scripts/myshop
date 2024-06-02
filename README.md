@@ -31,6 +31,8 @@ My shop script supports selling goods yourself in spance engineer.
 
 ## 自定义数据
 
+自定义数据修改后，均需要重置代码！！！
+
 ### GoodList
 商品列表，格式：
 
@@ -39,7 +41,7 @@ My shop script supports selling goods yourself in spance engineer.
 - TypeId: 物品的ID；
 - Name: 显示的名称
 - BuyPrice: 物品出售给客户的价格
-- SellPrice: 物品收购的价格
+- SellPrice: 物品收购的价格，设置成0不显示在出售列表上。
 
 实例：
 
