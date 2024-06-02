@@ -57,9 +57,9 @@ namespace IngameScript
             public double Amount;
         }
 
-        // 交易箱 Public_Item_Cargo
+        // 交易箱 PublicItemCargo
         List<IMyCargoContainer> tradeCargos = new List<IMyCargoContainer>();
-        // 存货箱
+        // 存货箱 PrivateItemCargo
         List<IMyCargoContainer> stockCargos = new List<IMyCargoContainer>();
         // 商品列表LCD  LCD_ITEM_LIST
         IMyTextPanel goodsListLcd;
