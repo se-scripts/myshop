@@ -2,7 +2,7 @@
 
 My shop script supports selling goods yourself in spance engineer.
 
-太空工程师，商店脚本，支持自己卖货、添加收购单。
+太空工程师，商店脚本，支持自己卖货、添加收购单，让SE实现卖货自由。
 
 # 流程
 
