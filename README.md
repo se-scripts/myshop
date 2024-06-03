@@ -30,8 +30,8 @@ LCD进行商品显示，按钮进行操作，公私箱子分组。
 
 - ItemSelectUp: 上一个
 - ItemSelectDown: 下一个
-- ItemSelectPageDown: 上一页
-- ItemSelectPageUp: 下一页
+- ItemSelectPageDown: 下一页
+- ItemSelectPageUp: 上一页
 - Cart:-1000: 购物车数量减少1000
 - Cart:+1000: 购物车数量增加1000
 - Cart:Submit: 提交购物车
