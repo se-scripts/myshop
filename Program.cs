@@ -32,6 +32,7 @@ namespace IngameScript
         * @see <https://github.com/se-scripts/myshop>
         * @author [li-guohao](https://github.com/li-guohao)
         */
+        const string version = "1.0.0";
         MyIni _ini = new MyIni();
 
         List<string> spritesList = new List<string>();
@@ -368,7 +369,7 @@ namespace IngameScript
 
             float x = 512 / 2, y1 = 205;
             DrawLogo(frame, x, y1, 200);
-            PanelWriteText(frame, "MyShop script\nsSupports selling goods yourself\nBy Li-guohao", x, y1 + 110, 1f, TextAlignment.CENTER);
+            PanelWriteText(frame, "MyShop script\nsSupports selling goods yourself\nBy Li-guohao\nwith v" + version, x, y1 + 110, 1f, TextAlignment.CENTER);
 
             frame.Dispose();
 
