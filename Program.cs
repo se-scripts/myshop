@@ -369,7 +369,7 @@ namespace IngameScript
 
             float x = 512 / 2, y1 = 205;
             DrawLogo(frame, x, y1, 200);
-            PanelWriteText(frame, "MyShop script\nsSupports selling goods yourself\nBy Li-guohao\nwith v" + version, x, y1 + 110, 1f, TextAlignment.CENTER);
+            PanelWriteText(frame, "MyShop scripts\nSupports selling goods yourself\nBy Li-guohao With version " + version, x, y1 + 110, 1f, TextAlignment.CENTER);
 
             frame.Dispose();
 
