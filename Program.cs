@@ -32,7 +32,7 @@ namespace IngameScript
         * @see <https://github.com/se-scripts/myshop>
         * @author [li-guohao](https://github.com/li-guohao)
         */
-        const string version = "1.0.0";
+        const string version = "1.1.0";
         MyIni _ini = new MyIni();
 
         List<string> spritesList = new List<string>();
@@ -40,8 +40,11 @@ namespace IngameScript
 
         Dictionary<string, string> translator = new Dictionary<string, string>();
 
-        const string information_Section = "Information";
-        const string translateList_Section = "TranslateList", length_Key = "Length";
+        const string informationSection = "Information", priceDiscount = "PriceDiscount";
+        const string translateListSection = "TranslateList", length_Key = "Length";
+        // Num1-Discount1;Num2-Discount2;Num3-Discount3
+        // 0 or 1 or -1 is not discount
+        const string defaultPriceDiscount = "10-0.98;100-0.975;1000-0.95;10000-0.925;100000-0.9;1000000-0.8;10000000-0.7;100000000-0.6;1000000000-0.5";
         double counter_Logo = 0;
 
         Color background_Color = new Color(0, 35, 45);
@@ -78,6 +81,7 @@ namespace IngameScript
         Dictionary<string, double> buyPrices = new Dictionary<string, double>();
         Dictionary<string, double> sellPrices = new Dictionary<string, double>();
         Dictionary<string, double> sellGoodsNumList = new Dictionary<string, double>();
+        Dictionary<int, double> discounts = new Dictionary<int, double>();
 
         int page = 1, size = 15;
         List<Goods> currentPageGoods = new List<Goods>();
@@ -102,6 +106,7 @@ namespace IngameScript
             cartLcd = (IMyTextPanel)GridTerminalSystem.GetBlockWithName("LCD_ITEM_SELECTOR");
 
             BuildPrices();
+            BuildDiscounts();
             ReloadSellGoodNumlList();
 
             BuildGoodsLcdGoodsList();
@@ -123,6 +128,24 @@ namespace IngameScript
                 buyPrices.Add(result[0], double.Parse((result[2] == null || result[2] == "") ? "0" : result[2]));
                 sellPrices.Add(result[0], double.Parse((result[3] == null || result[3] == "") ? "0" : result[3]));
             }
+        }
+
+        public void BuildDiscounts() {
+            var str = "";
+            GetConfiguration_from_CustomData(informationSection, priceDiscount, out str);
+            if ("" == str || null == str || "-1" == str || "0" == str || "1" == str) return;
+
+            var strs = str.Split(';');
+            if (str == null || str.Length == 0) return;
+            foreach (var s in strs)
+            {
+                var numDiscount = s.Trim().Split('-');
+                var num = int.Parse(numDiscount[0]);
+                var discount = double.Parse(numDiscount[1]);
+                discounts.Add(num, discount);
+            }
+            // 根据数量降序
+            discounts.OrderByDescending(e => e.Key);
         }
 
         public void ReloadSellGoodNumlList()
@@ -213,12 +236,14 @@ namespace IngameScript
             dataTemp = Me.CustomData;
             if (dataTemp == "" || dataTemp == null)
             {
-                _ini.Set(translateList_Section, length_Key, "1");
-                _ini.Set(translateList_Section, "1", "AH_BoreSight:More");
+                _ini.Set(informationSection, priceDiscount, defaultPriceDiscount);
+                _ini.Set(translateListSection, length_Key, "1");
+                _ini.Set(translateListSection, "1", "AH_BoreSight:More");
                 _ini.Set(goodsListSelection, length_Key, "0");
                 _ini.Set(sellListSelection, length_Key, "0");
                 Me.CustomData = _ini.ToString();
             }
+
         }
 
 
@@ -262,12 +287,12 @@ namespace IngameScript
         public void BuildTranslateDic()
         {
             string value;
-            GetConfiguration_from_CustomData(translateList_Section, length_Key, out value);
+            GetConfiguration_from_CustomData(translateListSection, length_Key, out value);
             int length = Convert.ToInt16(value);
 
             for (int i = 1; i <= length; i++)
             {
-                GetConfiguration_from_CustomData(translateList_Section, i.ToString(), out value);
+                GetConfiguration_from_CustomData(translateListSection, i.ToString(), out value);
                 string[] result = value.Split(':');
 
                 translator.Add(result[0], result[1]);
@@ -988,15 +1013,6 @@ namespace IngameScript
 
 
         // 根据交易量阶梯定价
-        // 10 九八折
-        // 100 九七五折
-        // 1K 九五折
-        // 10K 九二五折
-        // 100K 九折
-        // 1M 八折
-        // 10M 七折
-        // 100M 六折
-        // 1G 五折
         public double CalculateBuyPrice(string itemName, double amount)
         {
 
@@ -1007,52 +1023,15 @@ namespace IngameScript
 
             var price = buyPrices[itemName];
 
-            // 1G
-            if (amount >= 1000000000)
-            {
-                price = price * 0.5;
-            }
-            // 100M
-            else if (amount >= 100000000)
-            {
+            if (discounts.Count == 0) return price;
 
-                price = price * 0.6;
-            }
-            // 10M
-            else if (amount >= 10000000)
-            {
-
-                price = price * 0.7;
-            }
-            // 1M
-            else if (amount >= 1000000)
-            {
-                price = price * 0.8;
-            }
-            // 100K
-            else if (amount >= 100000)
-            {
-                price = price * 0.9;
-            }
-            // 10K
-            else if (amount >= 10000)
-            {
-                price = price * 0.925;
-            }
-            // 1000
-            else if (amount >= 1000)
-            {
-                price = price * 0.95;
-            }
-            // 100
-            else if (amount >= 100)
-            {
-                price = price * 0.975;
-            }
-            // 10
-            else if (amount >= 10)
-            {
-                price = price * 0.98;
+            foreach (var entry in discounts) {
+                var num = entry.Key;
+                var discount = entry.Value;
+                if (amount >= num) {
+                    price = price * discount;
+                    break;
+                }
             }
 
             return price;
