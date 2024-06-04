@@ -66,17 +66,39 @@ LCD进行商品显示，按钮进行操作，公私箱子分组。
 
 自定义数据修改后，均需要重置代码！！！
 
+### TranslateList
+翻译列表，控制LCD上展示的名称，
+
+> 温馨提示: 本脚本的`[TranslateList]`和James的图形化显示的`[Translate_List]`有不同之处，复制的时候还请注意！
+
+格式：
+
+`index=TypeId:Name`
+
+- TypeId: 物品的ID；
+- Name: LCD上的显示的名称
+
+示例：
+
+```
+[TranslateList]
+Length=2
+1=MyObjectBuilder_Ore/Stone:石头
+2=MyObjectBuilder_Ore/Iron:铁矿
+```
+
+
 ### GoodList
 商品列表，格式：
 
 `index=TypeId:Name:BuyPrice:SellPrice`
 
 - TypeId: 物品的ID；
-- Name: 显示的名称
+- Name: 名称（注意LCD展示主要靠`TranslateList`的`Name`配置，这里只是为了方便配置。）
 - BuyPrice: 物品出售给客户的价格
 - SellPrice: 物品收购的价格，设置成0不显示在出售列表上。
 
-实例：
+示例：
 
 ```
 [GoodList]
@@ -92,10 +114,10 @@ Length=2
 `index=TypeId:Name:Count`
 
 - TypeId: 物品的ID；
-- Name: 显示的名称
+- Name: 名称（注意LCD展示主要靠`TranslateList`的`Name`配置，这里只是为了方便配置。）
 - Count: 物品收购的最大数量，会减去商店的库存，才是可收购的量，最终显示在出售列表上。
 
-实例：
+示例：
 
 ```
 [SellList]
@@ -105,7 +127,7 @@ Length=3
 3=MyObjectBuilder_Ingot/Gold:金锭:100
 ```
 
-### 完整实例
+### 完整示例
 
 > 温馨提示: 本脚本的`[TranslateList]`和James的图形化显示的`[Translate_List]`有不同之处，复制的时候还请注意！
 
