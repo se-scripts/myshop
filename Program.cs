@@ -22,16 +22,15 @@ namespace IngameScript
 {
     partial class Program : MyGridProgram
     {
-
         /*
-        * R e a d m e
-        * -----------
-        * My shop script supports selling goods yourself.
-        * 太空工程师，我的商店脚本，支持自己卖货。
-        * 
-        * @see <https://github.com/se-scripts/myshop>
-        * @author [li-guohao](https://github.com/li-guohao)
-        */
+     * R e a d m e
+     * -----------
+     * My shop script supports selling goods yourself.
+     * 太空工程师，我的商店脚本，支持自己卖货。
+     * 
+     * @see <https://github.com/se-scripts/myshop>
+     * @author [li-guohao](https://github.com/li-guohao)
+     */
         const string version = "1.1.0";
         MyIni _ini = new MyIni();
 
@@ -130,7 +129,8 @@ namespace IngameScript
             }
         }
 
-        public void BuildDiscounts() {
+        public void BuildDiscounts()
+        {
             var str = "";
             GetConfiguration_from_CustomData(informationSection, priceDiscount, out str);
             if ("" == str || null == str || "-1" == str || "0" == str || "1" == str) return;
@@ -1025,10 +1025,12 @@ namespace IngameScript
 
             if (discounts.Count == 0) return price;
 
-            foreach (var entry in discounts) {
+            foreach (var entry in discounts)
+            {
                 var num = entry.Key;
                 var discount = entry.Value;
-                if (amount >= num) {
+                if (amount >= num)
+                {
                     price = price * discount;
                     break;
                 }
@@ -1133,7 +1135,5 @@ namespace IngameScript
                 SwitchMode();
             }
         }
-
-
     }
 }
