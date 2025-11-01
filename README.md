@@ -2,105 +2,103 @@
 
 My shop script supports selling goods yourself in spance engineer.
 
-Ì«¿Õ¹¤³ÌÊ¦£¬ÉÌµê½Å±¾£¬Ö§³Ö×Ô¼ºÂô»õ¡¢Ìí¼ÓÊÕ¹ºµ¥£¬ÈÃSEÊµÏÖÂô»õ×ÔÓÉ¡£
+å¤ªç©ºå·¥ç¨‹å¸ˆï¼Œå•†åº—è„šæœ¬ï¼Œæ”¯æŒè‡ªå·±å–è´§ã€æ·»åŠ æ”¶è´­å•ï¼Œè®©SEå®ç°å–è´§è‡ªç”±ã€‚
 
-## ·ÖÖ§
+## åˆ†æ”¯
 
-- main: °üº¬ÉÌµê¹¦ÄÜºÍÍ¼ĞÎ»¯ÏÔÊ¾¿â´æ¹¦ÄÜ
-- single_shop_function: ½ö°üº¬ÉÌµê¹¦ÄÜ
+- main: åŒ…å«å•†åº—åŠŸèƒ½å’Œå›¾å½¢åŒ–æ˜¾ç¤ºåº“å­˜åŠŸèƒ½
+- single_shop_function: ä»…åŒ…å«å•†åº—åŠŸèƒ½
 
-# ÈçºÎÊ¹ÓÃ
+# å¦‚ä½•ä½¿ç”¨
 
-½øÕâ¸öÍøÖ· [Program.cs](Program.cs)
+è¿›è¿™ä¸ªç½‘å€ [Program.cs](Program.cs)
 
-¸´ÖÆ´úÂëµ½SEµÄ±à³Ì¿éÀï
+å¤åˆ¶ä»£ç åˆ°SEçš„ç¼–ç¨‹å—é‡Œ
 
-ÇøÓòÊÇÉÏÏÂÁ½ĞĞ´óÀ¨ºÅ
+åŒºåŸŸæ˜¯ä¸Šä¸‹ä¸¤è¡Œå¤§æ‹¬å·
 
-¿ªÊ¼ĞĞ
+å¼€å§‹è¡Œ
 ![image](https://github.com/se-scripts/inventory-graphic/assets/46225881/c9da6269-6c71-4e49-b25e-9e928ebe86c4)
 
-½áÊøĞĞ
+ç»“æŸè¡Œ
 ![image](https://github.com/se-scripts/inventory-graphic/assets/46225881/6740f7e2-f7e6-4f36-ab58-08f4d856180e)
 
-# Á÷³Ì
+# æµç¨‹
 
-LCD½øĞĞÉÌÆ·ÏÔÊ¾£¬°´Å¥½øĞĞ²Ù×÷£¬¹«Ë½Ïä×Ó·Ö×é¡£
+LCDè¿›è¡Œå•†å“æ˜¾ç¤ºï¼ŒæŒ‰é’®è¿›è¡Œæ“ä½œï¼Œå…¬ç§ç®±å­åˆ†ç»„ã€‚
 
-ÄãĞèÒª°²×°ÖÁÉÙÁ½¸öLCDºÍ¶à¸ö°´Å¥£¬ĞŞ¸ÄLCDÃû³Æ£¬²¢¶Ô°´Å¥¶¯×÷½øĞĞÅäÖÃ£¬Í¬Ê±ĞèÒª¸øÏä×ÓÅäÖÃ×Ô¶¨ÒåÊı¾İºÍÊÇ·ñÓëËùÓĞÈË¹²Ïí¡£
+ä½ éœ€è¦å®‰è£…è‡³å°‘ä¸¤ä¸ªLCDå’Œå¤šä¸ªæŒ‰é’®ï¼Œä¿®æ”¹LCDåç§°ï¼Œå¹¶å¯¹æŒ‰é’®åŠ¨ä½œè¿›è¡Œé…ç½®ï¼ŒåŒæ—¶éœ€è¦ç»™ç®±å­é…ç½®è‡ªå®šä¹‰æ•°æ®å’Œæ˜¯å¦ä¸æ‰€æœ‰äººå…±äº«ã€‚
 
-°´Å¥ÍÆ¼öÊ¹ÓÃ¿Æ»ÃÏµÁĞ°´Å¥£¬ÄÜ×Ô¶¨ÒåÏÔÊ¾Ãæ°å¡£
+æŒ‰é’®æ¨èä½¿ç”¨ç§‘å¹»ç³»åˆ—æŒ‰é’®ï¼Œèƒ½è‡ªå®šä¹‰æ˜¾ç¤ºé¢æ¿ã€‚
 
-## ¹ºÂòÎïÆ·Á÷³Ì
-1. Ê¹ÓÃ×Ô¼ºµÄ´¬¶Ô½Ó
-2. ·É´¬¶Ô½ÓÃ³Ò×Õ¾(¹Ø±ÕÁ¬½ÓÆ÷Ã³Ò×Ä£Ê½)
-3. ½«ÊµÌå»õ±Ò·Åµ½½»Ò×Ïä(ÈÎÒâÒ»¸ö¾ù¿É)
-4. °´ÇĞ»»Ä£Ê½°´Å¥ÇĞ»»µ½¹ºÂòÄ£Ê½
-5. Ê¹ÓÃ×î°´Å¥µÄÉÏÏÂºÍ·­Ò³
-½«¹â±êÒÆ¶¯µ½Òª¹ºÂòµÄÎïÆ·ÉÏ
-6. Ê¹ÓÃ°´Å¥µ÷Õû½»Ò×Á¿
-7. ²é¿´ÊÇ·ñ¿ÉÒÔ½»Ò×£¬Èç¿ÉÒÔ½»Ò×
-Ôò°´ÓÒ±ß½»Ò×°´Å¥
-8. ½«½»Ò×ÏäÎïÆ·ºÍÊ£ÓàÊµÌå»õ±ÒÒÆ¶¯µ½×Ô¼º´¬ÉÏ
+## è´­ä¹°ç‰©å“æµç¨‹
+1. ä½¿ç”¨è‡ªå·±çš„èˆ¹å¯¹æ¥
+2. é£èˆ¹å¯¹æ¥è´¸æ˜“ç«™(å…³é—­è¿æ¥å™¨è´¸æ˜“æ¨¡å¼)
+3. å°†å®ä½“è´§å¸æ”¾åˆ°äº¤æ˜“ç®±(ä»»æ„ä¸€ä¸ªå‡å¯)
+4. æŒ‰åˆ‡æ¢æ¨¡å¼æŒ‰é’®åˆ‡æ¢åˆ°è´­ä¹°æ¨¡å¼
+5. ä½¿ç”¨æœ€æŒ‰é’®çš„ä¸Šä¸‹å’Œç¿»é¡µ
+å°†å…‰æ ‡ç§»åŠ¨åˆ°è¦è´­ä¹°çš„ç‰©å“ä¸Š
+6. ä½¿ç”¨æŒ‰é’®è°ƒæ•´äº¤æ˜“é‡
+7. æŸ¥çœ‹æ˜¯å¦å¯ä»¥äº¤æ˜“ï¼Œå¦‚å¯ä»¥äº¤æ˜“
+åˆ™æŒ‰å³è¾¹äº¤æ˜“æŒ‰é’®
+8. å°†äº¤æ˜“ç®±ç‰©å“å’Œå‰©ä½™å®ä½“è´§å¸ç§»åŠ¨åˆ°è‡ªå·±èˆ¹ä¸Š
 
-## ³öÊÛÎïÆ·Á÷³Ì
-1. ·É´¬¶Ô½ÓÃ³Ò×Õ¾(¹Ø±ÕÁ¬½ÓÆ÷Ã³Ò×Ä£Ê½)
-2. °´ÇĞ»»Ä£Ê½°´Å¥ÇĞ»»µ½³öÊÛÄ£Ê½£¬²é¿´¿É³öÊÛÎïÆ·
-3. ½«·É´¬´ı³öÊÛÎïÆ·ÒÆ¶¯µ½½»Ò×Ïä
-4. Ê¹ÓÃ×î×ó±ß°´Å¥£¬½«¹â±êÒÆ¶¯µ½´ı³öÊÛµÄÎïÆ·ÉÏ
-5. °´°´Å¥µ÷Õû½»Ò×Á¿(³öÊÛÊıÁ¿)
-6. °´½»Ò×°´Å¥½øĞĞ½»Ò×
-7. ½«ÊµÌåSCÍ¨¹ıATM´æÈë»òÕßÈ¡×ß
+## å‡ºå”®ç‰©å“æµç¨‹
+1. é£èˆ¹å¯¹æ¥è´¸æ˜“ç«™(å…³é—­è¿æ¥å™¨è´¸æ˜“æ¨¡å¼)
+2. æŒ‰åˆ‡æ¢æ¨¡å¼æŒ‰é’®åˆ‡æ¢åˆ°å‡ºå”®æ¨¡å¼ï¼ŒæŸ¥çœ‹å¯å‡ºå”®ç‰©å“
+3. å°†é£èˆ¹å¾…å‡ºå”®ç‰©å“ç§»åŠ¨åˆ°äº¤æ˜“ç®±
+4. ä½¿ç”¨æœ€å·¦è¾¹æŒ‰é’®ï¼Œå°†å…‰æ ‡ç§»åŠ¨åˆ°å¾…å‡ºå”®çš„ç‰©å“ä¸Š
+5. æŒ‰æŒ‰é’®è°ƒæ•´äº¤æ˜“é‡(å‡ºå”®æ•°é‡)
+6. æŒ‰äº¤æ˜“æŒ‰é’®è¿›è¡Œäº¤æ˜“
+7. å°†å®ä½“SCé€šè¿‡ATMå­˜å…¥æˆ–è€…å–èµ°
 
-## ¹¦ÄÜÑİÊ¾ÊÓÆµ
 
-[¡¾ßÙÁ¨ßÙÁ¨¡¿ ¡¾Ì«¿Õ¹¤³ÌÊ¦¡¿ÉÌµê½Å±¾ Ê¹ÓÃÑİÊ¾ ÈÃSEÊµÏÖÂô»õ×ÔÓÉ](https://www.bilibili.com/video/BV1mS411K7Ju/)
 
 # config
 
 ## LCD
-ĞèÒª¸ø¶ÔÓ¦µÄLCDµÄ`·½¿éÃû³Æ`ĞŞ¸Ä³ÉÕâ¸öÃû×Ö¡£
-- LCD_ITEM_SELECTOR: ÉÌÆ·Ñ¡ÔñLCD£¬Ë×³Æ¹ºÎï³µ£¬ÏÔÊ¾Ñ¡ÖĞµÄÉÌÆ·»òÕß×´Ì¬É¶µÄ¡£
-- LCD_ITEM_LIST: ÉÌÆ·ÁĞ±íLCD£¬Õ¹Ê¾¿ÉÑ¡ÔñµÄÁĞ±í£¬½¨ÒéÊ¹ÓÃ`¿Æ»ÃÒº¾§ÏÔÊ¾ÆÁ5X3`¡£
+éœ€è¦ç»™å¯¹åº”çš„LCDçš„`æ–¹å—åç§°`ä¿®æ”¹æˆè¿™ä¸ªåå­—ã€‚
+- LCD_ITEM_SELECTOR: å•†å“é€‰æ‹©LCDï¼Œä¿—ç§°è´­ç‰©è½¦ï¼Œæ˜¾ç¤ºé€‰ä¸­çš„å•†å“æˆ–è€…çŠ¶æ€å•¥çš„ã€‚
+- LCD_ITEM_LIST: å•†å“åˆ—è¡¨LCDï¼Œå±•ç¤ºå¯é€‰æ‹©çš„åˆ—è¡¨ï¼Œå»ºè®®ä½¿ç”¨`ç§‘å¹»æ¶²æ™¶æ˜¾ç¤ºå±5X3`ã€‚
 
-## Cargo | Ïä×Ó
-ĞèÒª°Ñ¶ÔÓ¦Ïä×ÓµÄ`×Ô¶¨ÒåÊı¾İ`ÉèÖÃ³ÉÈçÏÂÖµ£º
-- PublicItemCargo£º¹«¹²Ïä×Ó£¬¾ÍÊÇÉÌµêµÄ½»Ò×Ïä×Ó£¬¹Ë¿Í¿ÉÒÔ·ÃÎÊ£¬ĞèÒª×Ô¼ºÅäÖÃ³É`ÓëËùÓĞÈË¹²Ïí`¡£
-- PrivateItemCargo£ºÉÌµêµÄ»õÎïÏä×Ó£¬´æ´¢ÉÌµêµÄ»õÎï¡£
+## Cargo | ç®±å­
+éœ€è¦æŠŠå¯¹åº”ç®±å­çš„`è‡ªå®šä¹‰æ•°æ®`è®¾ç½®æˆå¦‚ä¸‹å€¼ï¼š
+- PublicItemCargoï¼šå…¬å…±ç®±å­ï¼Œå°±æ˜¯å•†åº—çš„äº¤æ˜“ç®±å­ï¼Œé¡¾å®¢å¯ä»¥è®¿é—®ï¼Œéœ€è¦è‡ªå·±é…ç½®æˆ`ä¸æ‰€æœ‰äººå…±äº«`ã€‚
+- PrivateItemCargoï¼šå•†åº—çš„è´§ç‰©ç®±å­ï¼Œå­˜å‚¨å•†åº—çš„è´§ç‰©ã€‚
 
-## °´Å¥±à³Ì¿éÃüÁîÅäÖÃ
+## æŒ‰é’®ç¼–ç¨‹å—å‘½ä»¤é…ç½®
 
-°´Å¥¹¤¾ßÀ¸£¬ÉèÖÃ¶¯×÷£¬Ñ¡Ôñ±à³Ì¿é£¬ÔËĞĞ²ÎÊı£¬ÌîÈëÏÂ·½µÄ²ÎÊı£º
+æŒ‰é’®å·¥å…·æ ï¼Œè®¾ç½®åŠ¨ä½œï¼Œé€‰æ‹©ç¼–ç¨‹å—ï¼Œè¿è¡Œå‚æ•°ï¼Œå¡«å…¥ä¸‹æ–¹çš„å‚æ•°ï¼š
 
-- ItemSelectUp: ÉÏÒ»¸ö
-- ItemSelectDown: ÏÂÒ»¸ö
-- ItemSelectPageDown: ÏÂÒ»Ò³
-- ItemSelectPageUp: ÉÏÒ»Ò³
-- Cart:-1000: ¹ºÎï³µÊıÁ¿¼õÉÙ1000
-- Cart:+1000: ¹ºÎï³µÊıÁ¿Ôö¼Ó1000
-- Cart:Submit: Ìá½»¹ºÎï³µ
-- Cart:Switch: ÇĞ»»Ä£Ê½
+- ItemSelectUp: ä¸Šä¸€ä¸ª
+- ItemSelectDown: ä¸‹ä¸€ä¸ª
+- ItemSelectPageDown: ä¸‹ä¸€é¡µ
+- ItemSelectPageUp: ä¸Šä¸€é¡µ
+- Cart:-1000: è´­ç‰©è½¦æ•°é‡å‡å°‘1000
+- Cart:+1000: è´­ç‰©è½¦æ•°é‡å¢åŠ 1000
+- Cart:Submit: æäº¤è´­ç‰©è½¦
+- Cart:Switch: åˆ‡æ¢æ¨¡å¼
 
-## ×Ô¶¨ÒåÊı¾İ
+## è‡ªå®šä¹‰æ•°æ®
 
-×Ô¶¨ÒåÊı¾İĞŞ¸Äºó£¬¾ùĞèÒªÖØÖÃ´úÂë£¡£¡£¡
+è‡ªå®šä¹‰æ•°æ®ä¿®æ”¹åï¼Œå‡éœ€è¦é‡ç½®ä»£ç ï¼ï¼ï¼
 
 ### Information
 
-Õâ¿éÊÇÒ»Ğ©»ù±¾ÅäÖÃ¡£
+è¿™å—æ˜¯ä¸€äº›åŸºæœ¬é…ç½®ã€‚
 
 #### PriceDiscount
 
-µ¥¼ÛÕÛ¿Û£¬
+å•ä»·æŠ˜æ‰£ï¼Œ
 
-Èç²»ĞèÒª´òÕÛ£¬ÏÂÃæÕâÒ»³¤´®£¬ÅäÖÃ³É `1` ¡£
+å¦‚ä¸éœ€è¦æ‰“æŠ˜ï¼Œä¸‹é¢è¿™ä¸€é•¿ä¸²ï¼Œé…ç½®æˆ `1` ã€‚
 
-´òÕÛµÄ¸ñÊ½£¬ÖĞ¼äÓÃÓ¢ÎÄ·ÖºÅ`;`¸ô¿ª£º
+æ‰“æŠ˜çš„æ ¼å¼ï¼Œä¸­é—´ç”¨è‹±æ–‡åˆ†å·`;`éš”å¼€ï¼š
 `Num1-Discount1;Num2-Discount2;Num3-Discount3`
-- Num: µ¥¼ÛµÄÊıÁ¿£¬³¬¹ıÕâ¸öÊı¾İ»á½øĞĞ×Ô¶¯´òÕÛ
-- Discount1: ÕÛ¿Û£¬¾ÅÎåÕÛ¾ÍÌî`0.95`
+- Num: å•ä»·çš„æ•°é‡ï¼Œè¶…è¿‡è¿™ä¸ªæ•°æ®ä¼šè¿›è¡Œè‡ªåŠ¨æ‰“æŠ˜
+- Discount1: æŠ˜æ‰£ï¼Œä¹äº”æŠ˜å°±å¡«`0.95`
 
-Ê¾Àı£º
+ç¤ºä¾‹ï¼š
 
 ```
 [Information]
@@ -108,158 +106,158 @@ PriceDiscount=10-0.98;100-0.975;1000-0.95;10000-0.925;100000-0.9;1000000-0.8;100
 ```
 
 ### TranslateList
-·­ÒëÁĞ±í£¬¿ØÖÆLCDÉÏÕ¹Ê¾µÄÃû³Æ£¬
+ç¿»è¯‘åˆ—è¡¨ï¼Œæ§åˆ¶LCDä¸Šå±•ç¤ºçš„åç§°ï¼Œ
 
-> ÎÂÜ°ÌáÊ¾: ±¾½Å±¾µÄ`[TranslateList]`ºÍJamesµÄÍ¼ĞÎ»¯ÏÔÊ¾µÄ`[Translate_List]`ÓĞ²»Í¬Ö®´¦£¬¸´ÖÆµÄÊ±ºò»¹Çë×¢Òâ£¡
+> æ¸©é¦¨æç¤º: æœ¬è„šæœ¬çš„`[TranslateList]`å’ŒJamesçš„å›¾å½¢åŒ–æ˜¾ç¤ºçš„`[Translate_List]`æœ‰ä¸åŒä¹‹å¤„ï¼Œå¤åˆ¶çš„æ—¶å€™è¿˜è¯·æ³¨æ„ï¼
 
-¸ñÊ½£º
+æ ¼å¼ï¼š
 
 `index=TypeId:Name`
 
-- TypeId: ÎïÆ·µÄID£»
-- Name: LCDÉÏµÄÏÔÊ¾µÄÃû³Æ
+- TypeId: ç‰©å“çš„IDï¼›
+- Name: LCDä¸Šçš„æ˜¾ç¤ºçš„åç§°
 
-Ê¾Àı£º
+ç¤ºä¾‹ï¼š
 
 ```
 [TranslateList]
 Length=2
-1=MyObjectBuilder_Ore/Stone:Ê¯Í·
-2=MyObjectBuilder_Ore/Iron:Ìú¿ó
+1=MyObjectBuilder_Ore/Stone:çŸ³å¤´
+2=MyObjectBuilder_Ore/Iron:é“çŸ¿
 ```
 
 
 ### GoodList
-ÉÌÆ·ÁĞ±í£¬¸ñÊ½£º
+å•†å“åˆ—è¡¨ï¼Œæ ¼å¼ï¼š
 
 `index=TypeId:Name:BuyPrice:SellPrice`
 
-- TypeId: ÎïÆ·µÄID£»
-- Name: Ãû³Æ£¨×¢ÒâLCDÕ¹Ê¾Ö÷Òª¿¿`TranslateList`µÄ`Name`ÅäÖÃ£¬ÕâÀïÖ»ÊÇÎªÁË·½±ãÅäÖÃ¡££©
-- BuyPrice: ÎïÆ·³öÊÛ¸ø¿Í»§µÄ¼Û¸ñ
-- SellPrice: ÎïÆ·ÊÕ¹ºµÄ¼Û¸ñ£¬ÉèÖÃ³É0²»ÏÔÊ¾ÔÚ³öÊÛÁĞ±íÉÏ¡£
+- TypeId: ç‰©å“çš„IDï¼›
+- Name: åç§°ï¼ˆæ³¨æ„LCDå±•ç¤ºä¸»è¦é `TranslateList`çš„`Name`é…ç½®ï¼Œè¿™é‡Œåªæ˜¯ä¸ºäº†æ–¹ä¾¿é…ç½®ã€‚ï¼‰
+- BuyPrice: ç‰©å“å‡ºå”®ç»™å®¢æˆ·çš„ä»·æ ¼
+- SellPrice: ç‰©å“æ”¶è´­çš„ä»·æ ¼ï¼Œè®¾ç½®æˆ0ä¸æ˜¾ç¤ºåœ¨å‡ºå”®åˆ—è¡¨ä¸Šã€‚
 
-Ê¾Àı£º
+ç¤ºä¾‹ï¼š
 
 ```
 [GoodList]
 Length=2
-1=MyObjectBuilder_Component/Computer:¼ÆËã»ú:1.35:0
-2=MyObjectBuilder_Ingot/Gold:½ğ¶§:44:40
+1=MyObjectBuilder_Component/Computer:è®¡ç®—æœº:1.35:0
+2=MyObjectBuilder_Ingot/Gold:é‡‘é”­:44:40
 ```
 
 ### SellList
 
-³öÊÛ(ÊÕ¹º)ÁĞ±í£¬¸ñÊ½£º
+å‡ºå”®(æ”¶è´­)åˆ—è¡¨ï¼Œæ ¼å¼ï¼š
 
 `index=TypeId:Name:Count`
 
-- TypeId: ÎïÆ·µÄID£»
-- Name: Ãû³Æ£¨×¢ÒâLCDÕ¹Ê¾Ö÷Òª¿¿`TranslateList`µÄ`Name`ÅäÖÃ£¬ÕâÀïÖ»ÊÇÎªÁË·½±ãÅäÖÃ¡££©
-- Count: ÎïÆ·ÊÕ¹ºµÄ×î´óÊıÁ¿£¬»á¼õÈ¥ÉÌµêµÄ¿â´æ£¬²ÅÊÇ¿ÉÊÕ¹ºµÄÁ¿£¬×îÖÕÏÔÊ¾ÔÚ³öÊÛÁĞ±íÉÏ¡£
+- TypeId: ç‰©å“çš„IDï¼›
+- Name: åç§°ï¼ˆæ³¨æ„LCDå±•ç¤ºä¸»è¦é `TranslateList`çš„`Name`é…ç½®ï¼Œè¿™é‡Œåªæ˜¯ä¸ºäº†æ–¹ä¾¿é…ç½®ã€‚ï¼‰
+- Count: ç‰©å“æ”¶è´­çš„æœ€å¤§æ•°é‡ï¼Œä¼šå‡å»å•†åº—çš„åº“å­˜ï¼Œæ‰æ˜¯å¯æ”¶è´­çš„é‡ï¼Œæœ€ç»ˆæ˜¾ç¤ºåœ¨å‡ºå”®åˆ—è¡¨ä¸Šã€‚
 
-Ê¾Àı£º
+ç¤ºä¾‹ï¼š
 
 ```
 [SellList]
 Length=3
-1=MyObjectBuilder_Component/ZoneChip:ÇøÓò³ïÂë:10
-2=MyObjectBuilder_ConsumableItem/CosmicCoffee:ÓîÖæ¿§·È:10
-3=MyObjectBuilder_Ingot/Gold:½ğ¶§:100
+1=MyObjectBuilder_Component/ZoneChip:åŒºåŸŸç­¹ç :10
+2=MyObjectBuilder_ConsumableItem/CosmicCoffee:å®‡å®™å’–å•¡:10
+3=MyObjectBuilder_Ingot/Gold:é‡‘é”­:100
 ```
 
-### ÍêÕûÊ¾Àı
+### å®Œæ•´ç¤ºä¾‹
 
-> ÎÂÜ°ÌáÊ¾: ±¾½Å±¾µÄ`[TranslateList]`ºÍJamesµÄÍ¼ĞÎ»¯ÏÔÊ¾µÄ`[Translate_List]`ÓĞ²»Í¬Ö®´¦£¬¸´ÖÆµÄÊ±ºò»¹Çë×¢Òâ£¡
+> æ¸©é¦¨æç¤º: æœ¬è„šæœ¬çš„`[TranslateList]`å’ŒJamesçš„å›¾å½¢åŒ–æ˜¾ç¤ºçš„`[Translate_List]`æœ‰ä¸åŒä¹‹å¤„ï¼Œå¤åˆ¶çš„æ—¶å€™è¿˜è¯·æ³¨æ„ï¼
 
 ```
 [TranslateList]
 Length=74
-1=MyObjectBuilder_Ore/Stone:Ê¯Í·
-2=MyObjectBuilder_Ore/Iron:Ìú¿ó
-3=MyObjectBuilder_Ore/Nickel:Äø¿ó
-4=MyObjectBuilder_Ore/Cobalt:îÜ¿ó
-5=MyObjectBuilder_Ore/Magnesium:Ã¾¿ó
-6=MyObjectBuilder_Ore/Silicon:¹è¿ó
-7=MyObjectBuilder_Ore/Silver:Òø¿ó
-8=MyObjectBuilder_Ore/Gold:½ğ¿ó
-9=MyObjectBuilder_Ore/Platinum:²¬½ğ¿ó
-10=MyObjectBuilder_Ore/Uranium:ÓË¿ó
-11=MyObjectBuilder_Ore/Ice:±ù
-12=MyObjectBuilder_Ore/Scrap:·Ï½ğÊô
-13=MyObjectBuilder_Ore/Trinium:ë°¿ó
-14=MyObjectBuilder_Ore/Empyrium:ĞÇÏµº£µÁ¿óÊ¯
-15=MyObjectBuilder_Ore/Naquadah:Í­¿ó         
-16=MyObjectBuilder_Ingot/Stone:É³Ê¯
-17=MyObjectBuilder_Ingot/Iron:Ìú¶§
-18=MyObjectBuilder_Ingot/Nickel:Äø¶§
-19=MyObjectBuilder_Ingot/Cobalt:îÜ¶§
-20=MyObjectBuilder_Ingot/Magnesium:Ã¾·Û
-21=MyObjectBuilder_Ingot/Silicon:¹èÆ¬
-22=MyObjectBuilder_Ingot/Silver:Òø¶§
-23=MyObjectBuilder_Ingot/Gold:½ğ¶§
-24=MyObjectBuilder_Ingot/Platinum:²¬½ğ¶§
-25=MyObjectBuilder_Ingot/Uranium:ÓË°ô
-26=MyObjectBuilder_Tool/AutomaticRifleItem:×Ô¶¯²½Ç¹
-27=MyObjectBuilder_Tool/PreciseAutomaticRifleItem:* ¾«ÃÜ×Ô¶¯²½Ç¹
-28=MyObjectBuilder_Tool/RapidFireAutomaticRifleItem:** ËÙÉä×Ô¶¯²½Ç¹
-29=MyObjectBuilder_Tool/UltimateAutomaticRifleItem:*** ¾«Èñ×Ô¶¯²½Ç¹
-30=MyObjectBuilder_Tool/WelderItem:º¸½ÓÆ÷
-31=MyObjectBuilder_Tool/Welder2Item:Ò»¼¶ÔöÇ¿º¸½ÓÆ÷
-32=MyObjectBuilder_Tool/Welder3Item:¶ş¼¶¾«Í¨º¸½ÓÆ÷
-33=MyObjectBuilder_Tool/Welder4Item:Èı¼¶¾«Ó¢º¸½ÓÆ÷
-34=MyObjectBuilder_Tool/AngleGrinderItem:ÇĞ¸î»ú
-35=MyObjectBuilder_Tool/AngleGrinder2Item:Ò»¼¶ÔöÇ¿ÇĞ¸î»ú
-36=MyObjectBuilder_Tool/AngleGrinder3Item:¶ş¼¶¾«Í¨ÇĞ¸î»ú
-37=MyObjectBuilder_Tool/AngleGrinder4Item:Èı¼¶¾«Ó¢ÇĞ¸î»ú
-38=MyObjectBuilder_Tool/HandDrillItem:ÊÖµç×ê
-39=MyObjectBuilder_Tool/HandDrill2Item:Ò»¼¶ÔöÇ¿ÊÖµç×ê
-40=MyObjectBuilder_Tool/HandDrill3Item:¶ş¼¶¾«Í¨ÊÖµç×ê
-41=MyObjectBuilder_Tool/HandDrill4Item:Èı¼¶¾«Ó¢ÊÖµç×ê  
-42=MyObjectBuilder_Component/Construction:½á¹¹Áã¼ş
-43=MyObjectBuilder_Component/MetalGrid:½ğÊôÍø¸ñ
-44=MyObjectBuilder_Component/InteriorPlate:ÄÚ³Ä°å
-45=MyObjectBuilder_Component/SteelPlate:¸Ö°å
-46=MyObjectBuilder_Component/Girder:Áº
-47=MyObjectBuilder_Component/SmallTube:Ğ¡¸Ö¹Ü
-48=MyObjectBuilder_Component/LargeTube:´óĞÍ¸Ö¹Ü
-49=MyObjectBuilder_Component/Motor:Âí´ï
-50=MyObjectBuilder_Component/Display:ÏÔÊ¾Æ÷
-51=MyObjectBuilder_Component/BulletproofGlass:·Àµ¯²£Á§
-52=MyObjectBuilder_Component/Computer:¼ÆËã»ú
-53=MyObjectBuilder_Component/Reactor:·´Ó¦¶ÑÁã¼ş
-54=MyObjectBuilder_Component/Thrust:ÍÆ½øÆ÷Áã¼ş
-55=MyObjectBuilder_Component/GravityGenerator:ÖØÁ¦·¢ÉúÆ÷Áã¼ş
-56=MyObjectBuilder_Component/Medical:Ò½ÁÆÁã¼ş
-57=MyObjectBuilder_Component/RadioCommunication:ÎŞÏßµçÁã¼ş
-58=MyObjectBuilder_Component/Detector:Ì½²âÆ÷Áã¼ş
-59=MyObjectBuilder_Component/Explosives:±¬Õ¨Îï
-60=MyObjectBuilder_Component/SolarCell:Ì«ÑôÄÜµç³Ø°å
-61=MyObjectBuilder_Component/PowerCell:¶¯Á¦µç³Ø
-62=MyObjectBuilder_Component/Superconductor:³¬µ¼Ìå
-63=MyObjectBuilder_Component/Canvas:·«²¼
-64=MyObjectBuilder_Component/bpglass:·Àµ¯²£Á§
-65=MyObjectBuilder_Component/thruster:ÍÆ½øÆ÷Áã¼ş
-66=MyObjectBuilder_Component/gravgen:ÖØÁ¦·¢ÉúÆ÷Áã¼ş
-67=MyObjectBuilder_Component/radio:ÎŞÏßµçÁã¼ş
-68=MyObjectBuilder_Component/ZoneChip:ÇøÓò³ïÂë
-69=MyObjectBuilder_PhysicalObject/SpaceCredit:Ì«¿Õ»õ±Ò
-70=MyObjectBuilder_ConsumableItem/CosmicCoffee:ÓîÖæ¿§·È
-71=MyObjectBuilder_ConsumableItem/ClangCola:¶£µ±¿ÉÀÖ
-72=MyObjectBuilder_PhysicalGunObject/Welder4Item:Èı¼¶º¸½ÓÆ÷
-73=MyObjectBuilder_PhysicalGunObject/AngleGrinder4Item:Èı¼¶ÇĞ¸î»ú
-74=MyObjectBuilder_PhysicalGunObject/HandDrill4Item:Èı¼¶ÊÖµç×ê
+1=MyObjectBuilder_Ore/Stone:çŸ³å¤´
+2=MyObjectBuilder_Ore/Iron:é“çŸ¿
+3=MyObjectBuilder_Ore/Nickel:é•çŸ¿
+4=MyObjectBuilder_Ore/Cobalt:é’´çŸ¿
+5=MyObjectBuilder_Ore/Magnesium:é•çŸ¿
+6=MyObjectBuilder_Ore/Silicon:ç¡…çŸ¿
+7=MyObjectBuilder_Ore/Silver:é“¶çŸ¿
+8=MyObjectBuilder_Ore/Gold:é‡‘çŸ¿
+9=MyObjectBuilder_Ore/Platinum:é“‚é‡‘çŸ¿
+10=MyObjectBuilder_Ore/Uranium:é“€çŸ¿
+11=MyObjectBuilder_Ore/Ice:å†°
+12=MyObjectBuilder_Ore/Scrap:åºŸé‡‘å±
+13=MyObjectBuilder_Ore/Trinium:æ°šçŸ¿
+14=MyObjectBuilder_Ore/Empyrium:æ˜Ÿç³»æµ·ç›—çŸ¿çŸ³
+15=MyObjectBuilder_Ore/Naquadah:é“œçŸ¿         
+16=MyObjectBuilder_Ingot/Stone:æ²™çŸ³
+17=MyObjectBuilder_Ingot/Iron:é“é”­
+18=MyObjectBuilder_Ingot/Nickel:é•é”­
+19=MyObjectBuilder_Ingot/Cobalt:é’´é”­
+20=MyObjectBuilder_Ingot/Magnesium:é•ç²‰
+21=MyObjectBuilder_Ingot/Silicon:ç¡…ç‰‡
+22=MyObjectBuilder_Ingot/Silver:é“¶é”­
+23=MyObjectBuilder_Ingot/Gold:é‡‘é”­
+24=MyObjectBuilder_Ingot/Platinum:é“‚é‡‘é”­
+25=MyObjectBuilder_Ingot/Uranium:é“€æ£’
+26=MyObjectBuilder_Tool/AutomaticRifleItem:è‡ªåŠ¨æ­¥æª
+27=MyObjectBuilder_Tool/PreciseAutomaticRifleItem:* ç²¾å¯†è‡ªåŠ¨æ­¥æª
+28=MyObjectBuilder_Tool/RapidFireAutomaticRifleItem:** é€Ÿå°„è‡ªåŠ¨æ­¥æª
+29=MyObjectBuilder_Tool/UltimateAutomaticRifleItem:*** ç²¾é”è‡ªåŠ¨æ­¥æª
+30=MyObjectBuilder_Tool/WelderItem:ç„Šæ¥å™¨
+31=MyObjectBuilder_Tool/Welder2Item:ä¸€çº§å¢å¼ºç„Šæ¥å™¨
+32=MyObjectBuilder_Tool/Welder3Item:äºŒçº§ç²¾é€šç„Šæ¥å™¨
+33=MyObjectBuilder_Tool/Welder4Item:ä¸‰çº§ç²¾è‹±ç„Šæ¥å™¨
+34=MyObjectBuilder_Tool/AngleGrinderItem:åˆ‡å‰²æœº
+35=MyObjectBuilder_Tool/AngleGrinder2Item:ä¸€çº§å¢å¼ºåˆ‡å‰²æœº
+36=MyObjectBuilder_Tool/AngleGrinder3Item:äºŒçº§ç²¾é€šåˆ‡å‰²æœº
+37=MyObjectBuilder_Tool/AngleGrinder4Item:ä¸‰çº§ç²¾è‹±åˆ‡å‰²æœº
+38=MyObjectBuilder_Tool/HandDrillItem:æ‰‹ç”µé’»
+39=MyObjectBuilder_Tool/HandDrill2Item:ä¸€çº§å¢å¼ºæ‰‹ç”µé’»
+40=MyObjectBuilder_Tool/HandDrill3Item:äºŒçº§ç²¾é€šæ‰‹ç”µé’»
+41=MyObjectBuilder_Tool/HandDrill4Item:ä¸‰çº§ç²¾è‹±æ‰‹ç”µé’»  
+42=MyObjectBuilder_Component/Construction:ç»“æ„é›¶ä»¶
+43=MyObjectBuilder_Component/MetalGrid:é‡‘å±ç½‘æ ¼
+44=MyObjectBuilder_Component/InteriorPlate:å†…è¡¬æ¿
+45=MyObjectBuilder_Component/SteelPlate:é’¢æ¿
+46=MyObjectBuilder_Component/Girder:æ¢
+47=MyObjectBuilder_Component/SmallTube:å°é’¢ç®¡
+48=MyObjectBuilder_Component/LargeTube:å¤§å‹é’¢ç®¡
+49=MyObjectBuilder_Component/Motor:é©¬è¾¾
+50=MyObjectBuilder_Component/Display:æ˜¾ç¤ºå™¨
+51=MyObjectBuilder_Component/BulletproofGlass:é˜²å¼¹ç»ç’ƒ
+52=MyObjectBuilder_Component/Computer:è®¡ç®—æœº
+53=MyObjectBuilder_Component/Reactor:ååº”å †é›¶ä»¶
+54=MyObjectBuilder_Component/Thrust:æ¨è¿›å™¨é›¶ä»¶
+55=MyObjectBuilder_Component/GravityGenerator:é‡åŠ›å‘ç”Ÿå™¨é›¶ä»¶
+56=MyObjectBuilder_Component/Medical:åŒ»ç–—é›¶ä»¶
+57=MyObjectBuilder_Component/RadioCommunication:æ— çº¿ç”µé›¶ä»¶
+58=MyObjectBuilder_Component/Detector:æ¢æµ‹å™¨é›¶ä»¶
+59=MyObjectBuilder_Component/Explosives:çˆ†ç‚¸ç‰©
+60=MyObjectBuilder_Component/SolarCell:å¤ªé˜³èƒ½ç”µæ± æ¿
+61=MyObjectBuilder_Component/PowerCell:åŠ¨åŠ›ç”µæ± 
+62=MyObjectBuilder_Component/Superconductor:è¶…å¯¼ä½“
+63=MyObjectBuilder_Component/Canvas:å¸†å¸ƒ
+64=MyObjectBuilder_Component/bpglass:é˜²å¼¹ç»ç’ƒ
+65=MyObjectBuilder_Component/thruster:æ¨è¿›å™¨é›¶ä»¶
+66=MyObjectBuilder_Component/gravgen:é‡åŠ›å‘ç”Ÿå™¨é›¶ä»¶
+67=MyObjectBuilder_Component/radio:æ— çº¿ç”µé›¶ä»¶
+68=MyObjectBuilder_Component/ZoneChip:åŒºåŸŸç­¹ç 
+69=MyObjectBuilder_PhysicalObject/SpaceCredit:å¤ªç©ºè´§å¸
+70=MyObjectBuilder_ConsumableItem/CosmicCoffee:å®‡å®™å’–å•¡
+71=MyObjectBuilder_ConsumableItem/ClangCola:å®å½“å¯ä¹
+72=MyObjectBuilder_PhysicalGunObject/Welder4Item:ä¸‰çº§ç„Šæ¥å™¨
+73=MyObjectBuilder_PhysicalGunObject/AngleGrinder4Item:ä¸‰çº§åˆ‡å‰²æœº
+74=MyObjectBuilder_PhysicalGunObject/HandDrill4Item:ä¸‰çº§æ‰‹ç”µé’»
 
 [GoodList]
 Length=2
-1=MyObjectBuilder_Component/Computer:¼ÆËã»ú:1.35:0
-2=MyObjectBuilder_Ingot/Gold:½ğ¶§:44:40
+1=MyObjectBuilder_Component/Computer:è®¡ç®—æœº:1.35:0
+2=MyObjectBuilder_Ingot/Gold:é‡‘é”­:44:40
 
 
 [SellList]
 Length=3
-1=MyObjectBuilder_Component/ZoneChip:ÇøÓò³ïÂë:10
-2=MyObjectBuilder_ConsumableItem/CosmicCoffee:ÓîÖæ¿§·È:10
-3=MyObjectBuilder_Ingot/Gold:½ğ¶§:100
+1=MyObjectBuilder_Component/ZoneChip:åŒºåŸŸç­¹ç :10
+2=MyObjectBuilder_ConsumableItem/CosmicCoffee:å®‡å®™å’–å•¡:10
+3=MyObjectBuilder_Ingot/Gold:é‡‘é”­:100
 
 ```
